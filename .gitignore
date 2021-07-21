@@ -1,7 +1,7 @@
 # Logs
 logs
 *.log
-
+.idea
 # Runtime data
 pids
 *.pid
@@ -30,5 +30,5 @@ tmp
 # Users Environment Variables
 .lock-wscript
 
-dist
+
 tokens-master
