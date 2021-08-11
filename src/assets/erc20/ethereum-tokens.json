@@ -4,7 +4,7 @@
     "code": "COIN",
     "decimals": 18,
     "contractAddress": "0xE61fDAF474Fac07063f2234Fb9e60C1163Cfa850",
-    "coinGeckoId": "coinvest"
+    "coinGeckoId": "coin"
   },
   "ZAP": {
     "name": "ZAP TOKEN",
