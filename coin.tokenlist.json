@@ -21,7 +21,7 @@
       "name": "COIN",
       "symbol": "COIN",
       "decimals": 18,
-      "logoURI": "https://raw.githubusercontent.com/compound-finance/token-list/master/assets/asset_DAI.svg"
+      "logoURI": "https://raw.githubusercontent.com/osinakayah/cryptoassets/master/coin.svg"
     },
     {
       "chainId": 3,
@@ -37,12 +37,12 @@
       "name": "COIN",
       "symbol": "COIN",
       "decimals": 18,
-      "logoURI": "https://raw.githubusercontent.com/compound-finance/token-list/master/assets/asset_DAI.svg"
+      "logoURI": "https://raw.githubusercontent.com/osinakayah/cryptoassets/master/coin.svg"
     }
   ],
   "version": {
     "major": 1,
     "minor": 0,
-    "patch": 0
+    "patch": 1
   }
 }
