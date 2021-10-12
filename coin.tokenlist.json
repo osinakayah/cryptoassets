@@ -26,7 +26,7 @@
     {
       "chainId": 3,
       "address": "0xad6d458402f60fd3bd25163575031acdce07538d",
-      "name": "Dai Stablecoin",
+      "name": "Dai Stablecoin (Cross chain Swap)",
       "symbol": "DAI",
       "decimals": 18,
       "logoURI": "https://raw.githubusercontent.com/compound-finance/token-list/master/assets/asset_DAI.svg"
