@@ -38,11 +38,19 @@
       "symbol": "COIN",
       "decimals": 18,
       "logoURI": "https://raw.githubusercontent.com/osinakayah/cryptoassets/master/coin.svg"
+    },
+    {
+      "chainId": 3,
+      "address": "0xda6000b9ddc303e5bd1a19b16af24b12949a1ae0",
+      "name": "MONEY",
+      "symbol": "MONEY",
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/osinakayah/cryptoassets/master/dollar-icon.svg"
     }
   ],
   "version": {
     "major": 1,
     "minor": 0,
-    "patch": 3
+    "patch": 4
   }
 }
