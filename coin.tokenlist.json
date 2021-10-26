@@ -9,27 +9,11 @@
   "tokens": [
     {
       "chainId": 1,
-      "address": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
-      "name": "Dai Stablecoin",
-      "symbol": "DAI",
-      "decimals": 18,
-      "logoURI": "https://raw.githubusercontent.com/compound-finance/token-list/master/assets/asset_DAI.svg"
-    },
-    {
-      "chainId": 1,
       "address": "0xE61fDAF474Fac07063f2234Fb9e60C1163Cfa850",
       "name": "COIN",
       "symbol": "COIN",
       "decimals": 18,
       "logoURI": "https://raw.githubusercontent.com/osinakayah/cryptoassets/master/coin.svg"
-    },
-    {
-      "chainId": 3,
-      "address": "0xad6d458402f60fd3bd25163575031acdce07538d",
-      "name": "Dai Cross chain Swap",
-      "symbol": "DAI",
-      "decimals": 18,
-      "logoURI": "https://raw.githubusercontent.com/compound-finance/token-list/master/assets/asset_DAI.svg"
     },
     {
       "chainId": 3,
@@ -51,6 +35,6 @@
   "version": {
     "major": 1,
     "minor": 0,
-    "patch": 4
+    "patch": 5
   }
 }
