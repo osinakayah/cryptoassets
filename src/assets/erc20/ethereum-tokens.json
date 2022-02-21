@@ -1,4 +1,11 @@
 {
+  "MONEY": {
+    "name": "MONEY",
+    "code": "MONEY",
+    "decimals": 18,
+    "contractAddress": "0xE61fDAF474Fac07063f2234Fb9e60C1163Cfa850",
+    "coinGeckoId": "money"
+  },
   "COIN": {
     "name": "COIN",
     "code": "COIN",
