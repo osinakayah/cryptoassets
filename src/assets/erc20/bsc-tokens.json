@@ -1,0 +1,20 @@
+{
+  "BTC.b": {
+    "name": "Binance-Peg BTCB Token",
+    "code": "BTCB",
+    "decimals": 18,
+    "contractAddress": "0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c",
+    "color": "#5b3159",
+    "coinGeckoId": "wrapped-bitcoin",
+    "matchingAsset": "WBTC"
+  },
+  "ETH.b": {
+    "name": "Binance-Peg Ethereum Token",
+    "code": "ETHB",
+    "decimals": 18,
+    "contractAddress": "0x2170ed0880ac9a755fd29b2688956bd959f933f8",
+    "color": "#5b3159",
+    "coinGeckoId": "weth",
+    "matchingAsset": "WETH"
+  }
+}
