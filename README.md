@@ -10,7 +10,7 @@ Crypto assets data and utilities through a standard inteface
 ## Installation
 
 ```bash
-npm install @liquality/cryptoassets --save
+npm install hodlverse/cryptoassets --save
 ```
 
 ## Usage
