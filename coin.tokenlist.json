@@ -38,7 +38,7 @@
       "symbol": "USDC",
       "decimals": 18,
       "logoURI": "https://raw.githubusercontent.com/osinakayah/cryptoassets/master/dollar-icon.svg"
-    }
+    },
     {
       "chainId": 97,
       "address": "0x1AF3F329e8BE154074D8769D1FFa4eE058B1DBc3",
