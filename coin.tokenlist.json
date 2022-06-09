@@ -30,6 +30,14 @@
       "symbol": "MONEY",
       "decimals": 18,
       "logoURI": "https://raw.githubusercontent.com/osinakayah/cryptoassets/master/dollar-icon.svg"
+    },
+    {
+      "chainId": 97,
+      "address": "0x5A679055d1a1ac067F34b2e5109B4198DA0Ebf43",
+      "name": "USDC Token",
+      "symbol": "USDC",
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/osinakayah/cryptoassets/master/dollar-icon.svg"
     }
   ],
   "version": {
