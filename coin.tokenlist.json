@@ -41,6 +41,14 @@
     },
     {
       "chainId": 97,
+      "address": "0x10D25a596f4B7CA57869A6f6ccCbd5975847aC4C",
+      "name": "Money Token",
+      "symbol": "MONEY",
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/osinakayah/cryptoassets/master/dollar-icon.svg"
+    },
+    {
+      "chainId": 97,
       "address": "0x1AF3F329e8BE154074D8769D1FFa4eE058B1DBc3",
       "name": "IoTeX Network",
       "symbol": "IOTX",
@@ -51,6 +59,6 @@
   "version": {
     "major": 1,
     "minor": 0,
-    "patch": 8
+    "patch": 9
   }
 }
