@@ -49,6 +49,14 @@
     },
     {
       "chainId": 97,
+      "address": "0x0d840469d56c0c1725d1a64da6a7e9e0143f4a10",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/osinakayah/cryptoassets/master/dollar-icon.svg"
+    },
+    {
+      "chainId": 97,
       "address": "0x1AF3F329e8BE154074D8769D1FFa4eE058B1DBc3",
       "name": "IoTeX Network",
       "symbol": "IOTX",
