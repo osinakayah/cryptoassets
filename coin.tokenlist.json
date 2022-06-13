@@ -57,6 +57,22 @@
     },
     {
       "chainId": 97,
+      "address": "0x2b4eBD749C6aC2cD8d80FD8e2198E2360248eCc1",
+      "name": "DAI",
+      "symbol": "DAI",
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/osinakayah/cryptoassets/master/dollar-icon.svg"
+    },
+    {
+      "chainId": 97,
+      "address": "0x7Bbba710C55E48E460BF72e1cc2E1a3A1CA9290b",
+      "name": "USDT",
+      "symbol": "USDT",
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/osinakayah/cryptoassets/master/dollar-icon.svg"
+    },
+    {
+      "chainId": 97,
       "address": "0x1AF3F329e8BE154074D8769D1FFa4eE058B1DBc3",
       "name": "IoTeX Network",
       "symbol": "IOTX",
@@ -67,6 +83,6 @@
   "version": {
     "major": 1,
     "minor": 0,
-    "patch": 9
+    "patch": 10
   }
 }
