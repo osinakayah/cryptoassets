@@ -56,6 +56,14 @@
       "logoURI": "https://raw.githubusercontent.com/osinakayah/cryptoassets/master/dollar-icon.svg"
     },
     {
+      "chainId": 11155111,
+      "address": "0xD0dF82dE051244f04BfF3A8bB1f62E1cD39eED92",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/osinakayah/cryptoassets/master/dollar-icon.svg"
+    },
+    {
       "chainId": 97,
       "address": "0x2b4eBD749C6aC2cD8d80FD8e2198E2360248eCc1",
       "name": "DAI",
