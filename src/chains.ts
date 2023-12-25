@@ -5,10 +5,16 @@ import { Chain, ChainId } from './types'
 import {
   isValidNearTx,
   isValidNearAddress,
+  isValidSolanaAddress,
   isValidBitcoinCashAddress,
   formatBitcoinCashAddress,
   isValidHex,
-  toLowerCaseWithout0x
+  isValidSolanaTx,
+  toLowerCaseWithout0x,
+  with0x,
+  isValidTerraAddress,
+  isValidTerraTx,
+  getRSKChainID
 } from './common'
 
 const chains: { [key in ChainId]: Chain } = {
@@ -20,6 +26,8 @@ const chains: { [key in ChainId]: Chain } = {
       unit: 'sat/b'
     },
     safeConfirmations: 1,
+    // 0,1 blocks per minute * 180 minutes (3 hours) -> 18 blocks wait period
+    txFailureTimeout: 10800000, // 3 hours in ms
     // TODO: include network types in validation
     isValidAddress: (address) => !!validateBitcoinAddress(address),
     formatAddress: (address) => address,
@@ -34,6 +42,8 @@ const chains: { [key in ChainId]: Chain } = {
       unit: 'sat/b'
     },
     safeConfirmations: 1,
+    // ~0,1 blocks per minute * 180 minutes (3 hours) -> 18 blocks wait period
+    txFailureTimeout: 10800000, // 3 hours in ms
     // TODO: include network types in validation
     isValidAddress: (address) => isValidBitcoinCashAddress(address),
     formatAddress: (address) => formatBitcoinCashAddress(address),
@@ -48,8 +58,10 @@ const chains: { [key in ChainId]: Chain } = {
       unit: 'gwei'
     },
     safeConfirmations: 3,
-    isValidAddress: isValidAddress,
-    formatAddress: toChecksumAddress,
+    // ~4 blocks per minute * 30 minutes -> 120 blocks wait period
+    txFailureTimeout: 1800000, // in ms
+    isValidAddress: (hexAddress: string) => isValidAddress(with0x(hexAddress)),
+    formatAddress: (hexAddress: string) => toChecksumAddress(with0x(hexAddress)),
     isValidTransactionHash: (hash: string) => isValidHex(hash),
     formatTransactionHash: (hash: string) => toLowerCaseWithout0x(hash)
   },
@@ -61,8 +73,11 @@ const chains: { [key in ChainId]: Chain } = {
       unit: 'gwei'
     },
     safeConfirmations: 5,
-    isValidAddress: isValidAddress,
-    formatAddress: toChecksumAddress,
+    // ~3 blocks per minute * 30 minutes -> 90 blocks wait period
+    txFailureTimeout: 1800000, // in ms
+    isValidAddress: (hexAddress: string) => isValidAddress(with0x(hexAddress)),
+    formatAddress: (hexAddress: string, network?: string) =>
+      toChecksumAddress(with0x(hexAddress), getRSKChainID(network)),
     isValidTransactionHash: (hash: string) => isValidHex(hash),
     formatTransactionHash: (hash: string) => toLowerCaseWithout0x(hash)
   },
@@ -74,8 +89,10 @@ const chains: { [key in ChainId]: Chain } = {
       unit: 'gwei'
     },
     safeConfirmations: 5,
-    isValidAddress: isValidAddress,
-    formatAddress: toChecksumAddress,
+    // ~20 blocks per minute * 10 minutes -> 200 blocks wait period
+    txFailureTimeout: 600000, // in ms
+    isValidAddress: (hexAddress: string) => isValidAddress(with0x(hexAddress)),
+    formatAddress: (hexAddress: string) => toChecksumAddress(with0x(hexAddress)),
     isValidTransactionHash: (hash: string) => isValidHex(hash),
     formatTransactionHash: (hash: string) => toLowerCaseWithout0x(hash)
   },
@@ -87,9 +104,41 @@ const chains: { [key in ChainId]: Chain } = {
       unit: 'TGas'
     },
     safeConfirmations: 10,
+    // ~50 blocks per minute * 5 minutes -> 250 blocks wait period
+    txFailureTimeout: 300000, // in ms
     isValidAddress: (address) => isValidNearAddress(address),
     formatAddress: (address) => address,
     isValidTransactionHash: (hash: string) => isValidNearTx(hash),
+    formatTransactionHash: (hash: string) => hash
+  },
+  [ChainId.Solana]: {
+    name: 'Solana',
+    code: 'SOL',
+    nativeAsset: 'SOL',
+    fees: {
+      unit: 'Lamports'
+    },
+    safeConfirmations: 31,
+    // ~120 blocks per minute * 5 minutes -> 600 blocks wait period
+    txFailureTimeout: 300000, // in ms
+    isValidAddress: (address) => isValidSolanaAddress(address),
+    formatAddress: (address) => address,
+    isValidTransactionHash: (hash: string) => isValidSolanaTx(hash),
+    formatTransactionHash: (hash: string) => hash
+  },
+  [ChainId.Terra]: {
+    name: 'Terra',
+    code: 'LUNA',
+    nativeAsset: 'LUNA',
+    fees: {
+      unit: 'LUNA'
+    },
+    safeConfirmations: 1,
+    // ~10 blocks per minute * 15 minutes -> 150 blocks wait period
+    txFailureTimeout: 900000, // in ms
+    isValidAddress: (address) => isValidTerraAddress(address),
+    formatAddress: (address) => address,
+    isValidTransactionHash: (hash: string) => isValidTerraTx(hash),
     formatTransactionHash: (hash: string) => hash
   },
   [ChainId.Polygon]: {
@@ -100,8 +149,10 @@ const chains: { [key in ChainId]: Chain } = {
       unit: 'gwei'
     },
     safeConfirmations: 5,
-    isValidAddress: isValidAddress,
-    formatAddress: toChecksumAddress,
+    // ~30 blocks per minute * 10 minutes -> 300 blocks wait period
+    txFailureTimeout: 600000, // in ms
+    isValidAddress: (hexAddress: string) => isValidAddress(with0x(hexAddress)),
+    formatAddress: (hexAddress: string) => toChecksumAddress(with0x(hexAddress)),
     isValidTransactionHash: (hash: string) => isValidHex(hash),
     formatTransactionHash: (hash: string) => toLowerCaseWithout0x(hash)
   },
@@ -113,17 +164,55 @@ const chains: { [key in ChainId]: Chain } = {
       unit: 'gwei'
     },
     safeConfirmations: 5,
-    isValidAddress: isValidAddress,
-    formatAddress: toChecksumAddress,
+    // ~15 blocks per minute * 10 minutes -> 150 blocks wait period
+    txFailureTimeout: 600000, // in ms
+    isValidAddress: (hexAddress: string) => isValidAddress(with0x(hexAddress)),
+    formatAddress: (hexAddress: string) => toChecksumAddress(with0x(hexAddress)),
     isValidTransactionHash: (hash: string) => isValidHex(hash),
     formatTransactionHash: (hash: string) => toLowerCaseWithout0x(hash)
+  },
+  [ChainId.Fuse]: {
+    name: 'Fuse',
+    code: 'FUSE',
+    nativeAsset: 'FUSE',
+    fees: {
+      unit: 'gwei'
+    },
+    safeConfirmations: 5,
+    // ~12 blocks per minute * 15 minutes -> 180 blocks wait period
+    txFailureTimeout: 900000, // in ms
+    isValidAddress: (hexAddress: string) => isValidAddress(with0x(hexAddress)),
+    formatAddress: (hexAddress: string) => toChecksumAddress(with0x(hexAddress)),
+    isValidTransactionHash: (hash: string) => isValidHex(hash),
+    formatTransactionHash: (hash: string) => toLowerCaseWithout0x(hash)
+  },
+  [ChainId.Avalanche]: {
+    name: 'Avalanche',
+    code: 'AVALANCHE',
+    nativeAsset: 'AVAX',
+    fees: {
+      unit: 'gwei'
+    },
+    safeConfirmations: 5,
+    // ~15 blocks per minute * 10 minutes -> 150 blocks wait period
+    txFailureTimeout: 600000, // in ms
+    isValidAddress: (hexAddress: string) => isValidAddress(with0x(hexAddress)),
+    formatAddress: (hexAddress: string) => toChecksumAddress(with0x(hexAddress)),
+    isValidTransactionHash: (hash: string) => isValidHex(hash),
+    formatTransactionHash: (hash: string) => hash
   }
 }
 
 function isEthereumChain(chain: ChainId) {
-  return [ChainId.BinanceSmartChain, ChainId.Ethereum, ChainId.Rootstock, ChainId.Polygon, ChainId.Arbitrum].includes(
-    chain
-  )
+  return [
+    ChainId.BinanceSmartChain,
+    ChainId.Ethereum,
+    ChainId.Rootstock,
+    ChainId.Polygon,
+    ChainId.Avalanche,
+    ChainId.Arbitrum,
+    ChainId.Fuse
+  ].includes(chain)
 }
 
 export { chains, isEthereumChain }

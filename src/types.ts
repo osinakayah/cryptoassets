@@ -6,8 +6,9 @@ export interface Chain {
     unit: string
   }
   safeConfirmations: number
-  isValidAddress: (address: string) => boolean
-  formatAddress: (address: string) => string
+  txFailureTimeout: number
+  isValidAddress: (address: string, network?: string) => boolean
+  formatAddress: (address: string, network?: string) => string
   isValidTransactionHash: (hash: string) => boolean
   formatTransactionHash: (hash: string) => string
 }
@@ -22,7 +23,11 @@ export enum ChainId {
   BinanceSmartChain = 'bsc',
   Near = 'near',
   Polygon = 'polygon',
-  Arbitrum = 'arbitrum'
+  Arbitrum = 'arbitrum',
+  Solana = 'solana',
+  Fuse = 'fuse',
+  Terra = 'terra',
+  Avalanche = 'avalanche'
 }
 
 export interface Asset {
@@ -35,4 +40,8 @@ export interface Asset {
   color?: string
   contractAddress?: string // ERC20 only
   matchingAsset?: string
+  feeAsset?: string
+  sendGasLimit: number
 }
+
+export type AssetMap = Record<string, Asset>
